@@ -107,7 +107,7 @@ public sealed class RpcSession : AppSession
     /// <param name="contentpackage"></param>
     /// <param name="tokens"></param>
     /// <returns></returns>
-    internal async ValueTask<RpcResponse<TResponsePackage>> GetRpcResponseAsync<TContentPackage, TResponsePackage>(
+    internal async ValueTask<RpcResponse<TResponsePackage>> GetResponseAsync<TContentPackage, TResponsePackage>(
         TContentPackage contentpackage,
         params CancellationToken[] tokens)
         where TContentPackage : class, IMessage

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MQTT.Client;
+using SuperSocket;
 using System.ComponentModel.DataAnnotations;
 
 namespace Server.Controllers;
@@ -32,7 +33,7 @@ public sealed class OrderController : ControllerBase
 
         try
         {
-            rpcResponse = await _server.OrderAddAsync(sessionId, new OrderAddRequest(), cancellationToken);
+            rpcResponse = await _server.GetResponseAsync<OrderAddRequest, OrderAddReply>(sessionId, new OrderAddRequest(), cancellationToken);
         }
         catch (Exception ex)
         {

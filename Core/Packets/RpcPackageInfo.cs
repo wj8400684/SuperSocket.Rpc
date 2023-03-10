@@ -20,7 +20,6 @@ public class CommandTypeInfo
 
 public class RpcPackageInfo : IKeyedPackageInfo<CommandKey>
 {
-    private static readonly Dictionary<CommandKey, MessageParser> Commands = new();
     private static readonly Lazy<Dictionary<Type, CommandTypeInfo>> CommandTypes = new(OnLoadCommandTyes);
 
     static Dictionary<Type, CommandTypeInfo> OnLoadCommandTyes()
@@ -46,7 +45,6 @@ public class RpcPackageInfo : IKeyedPackageInfo<CommandKey>
             if (messageDescriptor == null)
                 continue;
 
-            Commands.TryAdd(cmd, messageDescriptor.Parser);
             _map.TryAdd(attribute.PackageType, new CommandTypeInfo
             {
                 Command = cmd,
