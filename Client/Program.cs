@@ -38,7 +38,7 @@ await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.
 var watch = new Stopwatch();
 watch.Start();
 Console.WriteLine($"开始执行");
-for (int i = 0; i < 1000000; i++)
+for (int i = 0; i < 100000; i++)
 {
     var reply = await client.LoginAsync(new MQTT.Client.LoginRequest
     {

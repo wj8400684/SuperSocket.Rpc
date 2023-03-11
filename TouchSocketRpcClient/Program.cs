@@ -14,7 +14,7 @@ client.Connect();
 var watch = new Stopwatch();
 watch.Start();
 Console.WriteLine($"开始执行");
-for (int i = 0; i < 1000000; i++)
+for (int i = 0; i < 100000; i++)
 {
     //直接调用时，第一个参数为调用键
     //第二个参数为调用配置参数，可设置调用超时时间，取消调用等功能。示例中使用的预设，实际上可以自行new InvokeOption();
