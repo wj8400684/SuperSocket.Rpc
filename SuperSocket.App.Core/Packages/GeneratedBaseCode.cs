@@ -24,32 +24,21 @@ namespace Core {
     static GeneratedBaseCodeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdHZW5lcmF0ZWRCYXNlQ29kZS5wcm90bxIEQ29yZSLIAQoOUnBjUGFja2Fn",
-            "ZUluZm8SHQoDa2V5GAEgASgOMhAuQ29yZS5Db21tYW5kS2V5EiQKCkZvcndh",
-            "cmRLZXkYAiABKA4yEC5Db3JlLkNvbW1hbmRLZXkSEgoKc3VjY2Vzc0Z1bBgD",
-            "IAEoCBIPCgdjb250ZW50GAQgASgMEhIKCmlkZW50aWZpZXIYBSABKAMSFAoM",
-            "ZXJyb3JNZXNzYWdlGAYgASgJEiIKCWVycm9yQ29kZRgHIAEoDjIPLkNvcmUu",
-            "RXJyb3JDb2RlIh0KCUFkZFBhY2tldBIQCgh1c2VybmFtZRgBIAEoCSraAwoK",
-            "Q29tbWFuZEtleRIICgRub25lEAASDQoJaGVhcnRiZWF0EAESEgoOaGVhcnRi",
-            "ZWF0UmVwbHkQAhIKCgZyZWZlc2gQAxIPCgtyZWZlc2hSZXBseRAEEgsKB3Jl",
-            "c3RhcnQQBRIQCgxyZXN0YXJ0UmVwbHkQBhIJCgVjbG9zZRAHEg4KCmNsb3Nl",
-            "UmVwbHkQCBILCgdzdGFydGVkEAkSEAoMc3RhcnRlZFJlcGx5EAoSCgoGc3Rv",
-            "cGVkEAsSDwoLc3RvcGVkUmVwbHkQDBIICgRzeW5jEA0SDQoJc3luY1JlcGx5",
-            "EA4SBwoDYWRkEA8SDAoIYWRkUmVwbHkQEBIOCgphZGRFeHBUaW1lEBESEwoP",
-            "YWRkRXhwVGltZVJlcGx5EBISCQoFbG9naW4QExIOCgpsb2dpblJlcGx5EBQS",
-            "DQoJY29ubmVjdGVkEBUSEAoMZGlzY29ubmVjdGVkEBYSEAoMY2xpZW50VXBk",
-            "YXRlEBcSFQoRY2xpZW50VXBkYXRlUmVwbHkQGBIQCgxjbGllbnRSZWJvb3QQ",
-            "GRIRCg1jbGllbnRSZXN0YXJ0EBoSEwoPY2xpZW50QXV0aG9yaXphEBsSGAoU",
-            "Y2xpZW50QXV0aG9yaXphUmVwbHkQHCrZAQoJRXJyb3JDb2RlEggKBG51bGwQ",
-            "ABINCgd0aW1lT3V0EKCcARINCgdvZmZsaW5lEKGcARITCg1ub3RQZXJtaXNz",
-            "aW9uEKKcARISCgx1bmF1dGhvcml6ZWQQo5wBEhIKDHRva2VuRXhwaXJlZBCk",
-            "nAESFQoPd29ya0VudGVyRmFpbGVkEKWcARIUCg53b3JrRXhpdEZhaWxlZBCm",
-            "nAESGAoScGFyYW10ZXJDYW5ub3ROdWxsEKecARINCgd0b29GYXN0EKicARIR",
-            "CgtkZWNyeXB0RmFpbBCpnAFiBnByb3RvMw=="));
+            "ChdHZW5lcmF0ZWRCYXNlQ29kZS5wcm90bxIEQ29yZSKsAQoOUnBjUGFja2Fn",
+            "ZUluZm8SDwoHY29tbWFuZBgBIAEoBRIWCg5mb3J3YXJkQ29tbWFuZBgCIAEo",
+            "BRISCgpzdWNjZXNzRnVsGAMgASgIEg8KB2NvbnRlbnQYBCABKAwSEgoKaWRl",
+            "bnRpZmllchgFIAEoAxIUCgxlcnJvck1lc3NhZ2UYBiABKAkSIgoJZXJyb3JD",
+            "b2RlGAcgASgOMg8uQ29yZS5FcnJvckNvZGUiHQoJQWRkUGFja2V0EhAKCHVz",
+            "ZXJuYW1lGAEgASgJKtkBCglFcnJvckNvZGUSCAoEbnVsbBAAEg0KB3RpbWVP",
+            "dXQQoJwBEg0KB29mZmxpbmUQoZwBEhMKDW5vdFBlcm1pc3Npb24QopwBEhIK",
+            "DHVuYXV0aG9yaXplZBCjnAESEgoMdG9rZW5FeHBpcmVkEKScARIVCg93b3Jr",
+            "RW50ZXJGYWlsZWQQpZwBEhQKDndvcmtFeGl0RmFpbGVkEKacARIYChJwYXJh",
+            "bXRlckNhbm5vdE51bGwQp5wBEg0KB3Rvb0Zhc3QQqJwBEhEKC2RlY3J5cHRG",
+            "YWlsEKmcAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Core.CommandKey), typeof(global::Core.ErrorCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Core.RpcPackageInfo), global::Core.RpcPackageInfo.Parser, new[]{ "Key", "ForwardKey", "SuccessFul", "Content", "Identifier", "ErrorMessage", "ErrorCode" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Core.ErrorCode), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Core.RpcPackageInfo), global::Core.RpcPackageInfo.Parser, new[]{ "Command", "ForwardCommand", "SuccessFul", "Content", "Identifier", "ErrorMessage", "ErrorCode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Core.AddPacket), global::Core.AddPacket.Parser, new[]{ "Username" }, null, null, null, null)
           }));
     }
@@ -57,125 +46,6 @@ namespace Core {
 
   }
   #region Enums
-  public enum CommandKey {
-    /// <summary>
-    ///未知命令
-    /// </summary>
-    [pbr::OriginalName("none")] None = 0,
-    /// <summary>
-    ///心跳命令
-    /// </summary>
-    [pbr::OriginalName("heartbeat")] Heartbeat = 1,
-    /// <summary>
-    ///心跳命令
-    /// </summary>
-    [pbr::OriginalName("heartbeatReply")] HeartbeatReply = 2,
-    /// <summary>
-    ///刷新订单
-    /// </summary>
-    [pbr::OriginalName("refesh")] Refesh = 3,
-    /// <summary>
-    ///刷新订单
-    /// </summary>
-    [pbr::OriginalName("refeshReply")] RefeshReply = 4,
-    /// <summary>
-    ///重启订单
-    /// </summary>
-    [pbr::OriginalName("restart")] Restart = 5,
-    /// <summary>
-    ///重启订单
-    /// </summary>
-    [pbr::OriginalName("restartReply")] RestartReply = 6,
-    /// <summary>
-    ///关闭订单
-    /// </summary>
-    [pbr::OriginalName("close")] Close = 7,
-    /// <summary>
-    ///关闭订单
-    /// </summary>
-    [pbr::OriginalName("closeReply")] CloseReply = 8,
-    /// <summary>
-    ///订单启动
-    /// </summary>
-    [pbr::OriginalName("started")] Started = 9,
-    /// <summary>
-    ///订单启动
-    /// </summary>
-    [pbr::OriginalName("startedReply")] StartedReply = 10,
-    /// <summary>
-    ///订单停止
-    /// </summary>
-    [pbr::OriginalName("stoped")] Stoped = 11,
-    /// <summary>
-    ///订单停止
-    /// </summary>
-    [pbr::OriginalName("stopedReply")] StopedReply = 12,
-    /// <summary>
-    ///同步代理客户端信息
-    /// </summary>
-    [pbr::OriginalName("sync")] Sync = 13,
-    /// <summary>
-    ///同步代理客户端信息
-    /// </summary>
-    [pbr::OriginalName("syncReply")] SyncReply = 14,
-    /// <summary>
-    ///添加任务
-    /// </summary>
-    [pbr::OriginalName("add")] Add = 15,
-    /// <summary>
-    ///添加任务回应
-    /// </summary>
-    [pbr::OriginalName("addReply")] AddReply = 16,
-    /// <summary>
-    ///增加任务时间
-    /// </summary>
-    [pbr::OriginalName("addExpTime")] AddExpTime = 17,
-    /// <summary>
-    ///增加任务时间
-    /// </summary>
-    [pbr::OriginalName("addExpTimeReply")] AddExpTimeReply = 18,
-    /// <summary>
-    ///登录
-    /// </summary>
-    [pbr::OriginalName("login")] Login = 19,
-    /// <summary>
-    ///登录
-    /// </summary>
-    [pbr::OriginalName("loginReply")] LoginReply = 20,
-    /// <summary>
-    ///客户端连接
-    /// </summary>
-    [pbr::OriginalName("connected")] Connected = 21,
-    /// <summary>
-    ///客户端断开连接
-    /// </summary>
-    [pbr::OriginalName("disconnected")] Disconnected = 22,
-    /// <summary>
-    ///工作客户端状态更新
-    /// </summary>
-    [pbr::OriginalName("clientUpdate")] ClientUpdate = 23,
-    /// <summary>
-    ///工作客户端状态更新回复
-    /// </summary>
-    [pbr::OriginalName("clientUpdateReply")] ClientUpdateReply = 24,
-    /// <summary>
-    ///关闭客户端
-    /// </summary>
-    [pbr::OriginalName("clientReboot")] ClientReboot = 25,
-    /// <summary>
-    ///重启客户端
-    /// </summary>
-    [pbr::OriginalName("clientRestart")] ClientRestart = 26,
-    /// <summary>
-    ///客户端认证
-    /// </summary>
-    [pbr::OriginalName("clientAuthoriza")] ClientAuthoriza = 27,
-    /// <summary>
-    ///客户端认证
-    /// </summary>
-    [pbr::OriginalName("clientAuthorizaReply")] ClientAuthorizaReply = 28,
-  }
-
   /// <summary>
   ///错误代码
   /// </summary>
@@ -255,8 +125,8 @@ namespace Core {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RpcPackageInfo(RpcPackageInfo other) : this() {
-      key_ = other.key_;
-      forwardKey_ = other.forwardKey_;
+      command_ = other.command_;
+      forwardCommand_ = other.forwardCommand_;
       successFul_ = other.successFul_;
       content_ = other.content_;
       identifier_ = other.identifier_;
@@ -270,31 +140,31 @@ namespace Core {
       return new RpcPackageInfo(this);
     }
 
-    /// <summary>Field number for the "key" field.</summary>
-    public const int KeyFieldNumber = 1;
-    private global::Core.CommandKey key_ = global::Core.CommandKey.None;
+    /// <summary>Field number for the "command" field.</summary>
+    public const int CommandFieldNumber = 1;
+    private int command_;
     /// <summary>
     ///请求或者回复的命令类型
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Core.CommandKey Key {
-      get { return key_; }
+    public int Command {
+      get { return command_; }
       set {
-        key_ = value;
+        command_ = value;
       }
     }
 
-    /// <summary>Field number for the "ForwardKey" field.</summary>
-    public const int ForwardKeyFieldNumber = 2;
-    private global::Core.CommandKey forwardKey_ = global::Core.CommandKey.None;
+    /// <summary>Field number for the "forwardCommand" field.</summary>
+    public const int ForwardCommandFieldNumber = 2;
+    private int forwardCommand_;
     /// <summary>
     ///转发的key
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Core.CommandKey ForwardKey {
-      get { return forwardKey_; }
+    public int ForwardCommand {
+      get { return forwardCommand_; }
       set {
-        forwardKey_ = value;
+        forwardCommand_ = value;
       }
     }
 
@@ -381,8 +251,8 @@ namespace Core {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Key != other.Key) return false;
-      if (ForwardKey != other.ForwardKey) return false;
+      if (Command != other.Command) return false;
+      if (ForwardCommand != other.ForwardCommand) return false;
       if (SuccessFul != other.SuccessFul) return false;
       if (Content != other.Content) return false;
       if (Identifier != other.Identifier) return false;
@@ -394,8 +264,8 @@ namespace Core {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Key != global::Core.CommandKey.None) hash ^= Key.GetHashCode();
-      if (ForwardKey != global::Core.CommandKey.None) hash ^= ForwardKey.GetHashCode();
+      if (Command != 0) hash ^= Command.GetHashCode();
+      if (ForwardCommand != 0) hash ^= ForwardCommand.GetHashCode();
       if (SuccessFul != false) hash ^= SuccessFul.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (Identifier != 0L) hash ^= Identifier.GetHashCode();
@@ -417,13 +287,13 @@ namespace Core {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Key != global::Core.CommandKey.None) {
+      if (Command != 0) {
         output.WriteRawTag(8);
-        output.WriteEnum((int) Key);
+        output.WriteInt32(Command);
       }
-      if (ForwardKey != global::Core.CommandKey.None) {
+      if (ForwardCommand != 0) {
         output.WriteRawTag(16);
-        output.WriteEnum((int) ForwardKey);
+        output.WriteInt32(ForwardCommand);
       }
       if (SuccessFul != false) {
         output.WriteRawTag(24);
@@ -454,13 +324,13 @@ namespace Core {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Key != global::Core.CommandKey.None) {
+      if (Command != 0) {
         output.WriteRawTag(8);
-        output.WriteEnum((int) Key);
+        output.WriteInt32(Command);
       }
-      if (ForwardKey != global::Core.CommandKey.None) {
+      if (ForwardCommand != 0) {
         output.WriteRawTag(16);
-        output.WriteEnum((int) ForwardKey);
+        output.WriteInt32(ForwardCommand);
       }
       if (SuccessFul != false) {
         output.WriteRawTag(24);
@@ -491,11 +361,11 @@ namespace Core {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Key != global::Core.CommandKey.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Key);
+      if (Command != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Command);
       }
-      if (ForwardKey != global::Core.CommandKey.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ForwardKey);
+      if (ForwardCommand != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ForwardCommand);
       }
       if (SuccessFul != false) {
         size += 1 + 1;
@@ -523,11 +393,11 @@ namespace Core {
       if (other == null) {
         return;
       }
-      if (other.Key != global::Core.CommandKey.None) {
-        Key = other.Key;
+      if (other.Command != 0) {
+        Command = other.Command;
       }
-      if (other.ForwardKey != global::Core.CommandKey.None) {
-        ForwardKey = other.ForwardKey;
+      if (other.ForwardCommand != 0) {
+        ForwardCommand = other.ForwardCommand;
       }
       if (other.SuccessFul != false) {
         SuccessFul = other.SuccessFul;
@@ -559,11 +429,11 @@ namespace Core {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Key = (global::Core.CommandKey) input.ReadEnum();
+            Command = input.ReadInt32();
             break;
           }
           case 16: {
-            ForwardKey = (global::Core.CommandKey) input.ReadEnum();
+            ForwardCommand = input.ReadInt32();
             break;
           }
           case 24: {
@@ -601,11 +471,11 @@ namespace Core {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Key = (global::Core.CommandKey) input.ReadEnum();
+            Command = input.ReadInt32();
             break;
           }
           case 16: {
-            ForwardKey = (global::Core.CommandKey) input.ReadEnum();
+            ForwardCommand = input.ReadInt32();
             break;
           }
           case 24: {

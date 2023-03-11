@@ -6,7 +6,7 @@ namespace TContentPackage;
 
 public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
 {
-    private readonly Type _type;
+    protected readonly Type Type;
     private static readonly Dictionary<Type, CommandKey> CommandTypes = new();
 
     #region command inilizetion
@@ -51,7 +51,7 @@ public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
     protected RpcPackageBase(CommandKey key)
     {
         Key = key;
-        _type = GetType();
+        Type = GetType();
     }
 
     /// <summary>
@@ -60,20 +60,25 @@ public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
     [MemoryPackIgnore]
     public CommandKey Key { get; set; }
 
-    public virtual byte[] Encode()
-    {
-        return MemoryPackSerializer.Serialize(_type, this);
-    }
-
     public virtual int Encode(IBufferWriter<byte> bufWriter)
     {
         using var state = MemoryPackWriterOptionalStatePool.Rent(MemoryPackSerializerOptions.Utf8);
         var writer = new MemoryPackWriter<IBufferWriter<byte>>(ref bufWriter, state);
-        writer.WriteValue(_type, this);
+        writer.WriteValue(Type, this);
         var writtenCount = writer.WrittenCount;
         writer.Flush();
 
         return writtenCount;
+    }
+
+    internal protected virtual void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    {
+        MemoryPackSerializer.Deserialize(Type, reader.UnreadSequence, ref context);
+    }
+
+    public override string ToString()
+    {
+        return System.Text.Json.JsonSerializer.Serialize(this, Type);
     }
 }
 

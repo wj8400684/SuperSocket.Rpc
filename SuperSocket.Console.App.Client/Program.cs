@@ -1,21 +1,20 @@
-﻿using ClientMemoryPack;
+﻿using Client;
+using Core;
 using Microsoft.Extensions.DependencyInjection;
-using SuperSocket.Client;
 using SuperSocket.Client.Command;
 using System.Diagnostics;
 using System.Net;
-using TContentPackage;
 
 var services = new ServiceCollection();
 
 services.AddLogging();
 
-services.AddCommandClient<CommandKey, RpcPackageBase>(option =>
+services.AddCommandClient<CommandKey, RpcPackageInfo>(option =>
 {
     option.UseClient<RpcClient>();
     option.UsePackageEncoder<RpcPackageEncode>();
     option.UsePipelineFilter<RpcPipeLineFilter>();
-    option.UseCommand(options => options.AddCommandAssembly(typeof(LoginAck).Assembly));
+    option.UseCommand(options => options.AddCommandAssembly(typeof(OrderAdd).Assembly));
 });
 
 var provider = services.BuildServiceProvider();
@@ -38,9 +37,9 @@ await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.
 var watch = new Stopwatch();
 watch.Start();
 Console.WriteLine($"开始执行");
-for (int i = 0; i < 100000; i++)
+for (int i = 0; i < 1000000; i++)
 {
-    var reply = await client.LoginAsync(new CoreMemoryPack.LoginPackage
+    var reply = await client.LoginAsync(new LoginRequest
     {
         Username = "sss",
         Password = "password",

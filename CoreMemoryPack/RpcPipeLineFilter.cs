@@ -1,8 +1,8 @@
 using System.Buffers;
-using TContentPackageMemoryPack;
 using SuperSocket.ProtoBase;
 
 namespace TContentPackage;
+
 
 /// <summary>
 /// | bodyLength | body |
@@ -11,11 +11,41 @@ namespace TContentPackage;
 public sealed class RpcPipeLineFilter : FixedHeaderPipelineFilter<RpcPackageBase>
 {
     private const int HeaderSize = sizeof(short);
+    private IPacketFactory[] _packetFactories;
 
     public RpcPipeLineFilter()
         : base(HeaderSize)
     {
-        PacketFactoryPool.Inilizetion();
+        if (_packetFactories != null)
+            return;
+
+        var commands = RpcPackageBase.GetCommands();
+
+        _packetFactories = new IPacketFactory[commands.Count + 1];
+
+        foreach (var command in commands)
+        {
+            var genericType = typeof(DefaultPacketFactory<>).MakeGenericType(command.Key);
+
+            if (Activator.CreateInstance(genericType) is not IPacketFactory packetFactory)
+                continue;
+
+            _packetFactories[(int)command.Value] = packetFactory;
+        }
+    }
+
+    interface IPacketFactory
+    {
+        RpcPackageBase Create();
+    }
+
+    class DefaultPacketFactory<TPacket> : IPacketFactory
+        where TPacket : RpcPackageBase, new()
+    {
+        public RpcPackageBase Create()
+        {
+            return new TPacket();
+        }
     }
 
     protected override RpcPackageBase DecodePackage(ref ReadOnlySequence<byte> buffer)
@@ -25,12 +55,16 @@ public sealed class RpcPipeLineFilter : FixedHeaderPipelineFilter<RpcPackageBase
         //¶ÁÈ¡ command
         reader.TryRead(out var command);
 
-        var factory = PacketFactoryPool.Get(command);
+        var packetFactory = _packetFactories[command];
 
-        if (factory == null)
+        if (packetFactory == null)
             throw new ProtocolException($"ÃüÁî£º{command}Î´×¢²á");
 
-        return factory.Decode(ref reader);
+        var package = packetFactory.Create();
+
+        package.DecodeBody(ref reader, package);
+
+        return package;
     }
 
     protected override int GetBodyLengthFromHeader(ref ReadOnlySequence<byte> buffer)

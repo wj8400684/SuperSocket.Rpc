@@ -4,12 +4,12 @@ namespace Core;
 
 public readonly struct RpcResponse<TContentPacket> where TContentPacket : class, IMessage
 {
-    public RpcResponse(RpcPackageInfo packet)
+    public RpcResponse(RpcPackageInfo package)
     {
-        Successful = packet.SuccessFul;
-        ErrorCode = packet.ErrorCode;
-        ErrorMessage = packet.ErrorMessage;
-        Content = packet.DecodeBody<TContentPacket>();
+        Successful = package.SuccessFul;
+        ErrorCode = package.ErrorCode;
+        ErrorMessage = package.ErrorMessage;
+        Content = package.DecodeBody<TContentPacket>();
     }
 
     /// <summary>
