@@ -14,9 +14,9 @@ public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
     internal static void LoadAllCommand()
     {
         var packets = typeof(RpcPackageBase).Assembly.GetTypes()
-                                                 .Where(t => typeof(RpcPackageBase).IsAssignableFrom(t))
-                                                 .Where(t => !t.IsAbstract && t.IsClass)
-                                                 .Select(t => (RpcPackageBase?)Activator.CreateInstance(t));
+            .Where(t => typeof(RpcPackageBase).IsAssignableFrom(t))
+            .Where(t => !t.IsAbstract && t.IsClass)
+            .Select(t => (RpcPackageBase?)Activator.CreateInstance(t));
 
         using var enumerator = packets.GetEnumerator();
         while (enumerator.MoveNext())
@@ -71,7 +71,7 @@ public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
         return writtenCount;
     }
 
-    internal protected virtual void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    protected internal virtual void DecodeBody(ref SequenceReader<byte> reader, object? context)
     {
         MemoryPackSerializer.Deserialize(Type, reader.UnreadSequence, ref context);
     }
