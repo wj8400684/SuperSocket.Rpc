@@ -165,7 +165,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
         var replyPackage = new RpcPackageInfo
         {
             Key = _ack,
-            SuccessFul = true,
+            SuccessFul = false,
             Identifier = package.Identifier,
         };
 
@@ -193,10 +193,10 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
         try
         {
             replyPackage.Content = await OnEncodePackageAsync(replyContent);
+            replyPackage.SuccessFul = true;
         }
         catch (Exception ex)
         {
-            replyPackage.SuccessFul = false;
             replyPackage.ErrorMessage = "编码错误,请联系管理员";
             session.LogError(ex, $"[ {session.RemoteAddress} ]-[ {session.SessionID} ]-[ {ex.Message} ] 未处理异常，编码内容封包抛出异常");
         }
