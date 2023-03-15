@@ -10,6 +10,7 @@ using TContentPackage;
 var host = SuperSocketHostBuilder.Create<RpcPackageBase, RpcPipeLineFilter>()
     .UseHostedService<RpcServer>()
     .UseSession<RpcSession>()
+    .UsePackageDecoder<RpcPackageDecoder>()
     .UseCommand(options => options.AddCommandAssembly(typeof(Login).Assembly))
     .UseClearIdleSession()
     .UseInProcSessionContainer()

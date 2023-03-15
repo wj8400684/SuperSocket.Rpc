@@ -9,7 +9,7 @@ using (var channel = GrpcChannel.ForAddress("http://localhost:5000"))
     var watch = new Stopwatch();
     watch.Start();
     Console.WriteLine($"开始执行");
-    for (int i = 0; i < 100000; i++)
+    for (int i = 0; i < 1000000; i++)
     {
         var reply = await client.SayHelloAsync(new HelloRequest
         {

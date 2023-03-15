@@ -1,4 +1,5 @@
 ﻿using ClientMemoryPack;
+using CoreMemoryPack;
 using Microsoft.Extensions.DependencyInjection;
 using SuperSocket.Client;
 using SuperSocket.Client.Command;
@@ -22,13 +23,13 @@ var provider = services.BuildServiceProvider();
 
 var client = provider.GetRequiredService<RpcClient>();
 
-await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
+//await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
 
 
-//var easyClient = new EasyClient<RpcPackageInfo, RpcPackageInfo>(new RpcPipeLineFilter(), new RpcPackageEncode()).AsClient();
+var easyClient = new EasyClient<RpcPackageBase, RpcPackageBase>(new RpcPipeLineFilter(), new RpcPackageEncode()).AsClient();
 
 
-//await easyClient.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
+await easyClient.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
 
 
 
@@ -38,23 +39,23 @@ await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.
 var watch = new Stopwatch();
 watch.Start();
 Console.WriteLine($"开始执行");
-for (int i = 0; i < 100000; i++)
+for (int i = 0; i < 1000000; i++)
 {
-    var reply = await client.LoginAsync(new CoreMemoryPack.LoginPackage
+    //var reply = await client.LoginAsync(new CoreMemoryPack.LoginPackage
+    //{
+    //    Username = "sss",
+    //    Password = "password",
+    //});
+
+    await easyClient.SendAsync(new LoginPackage
     {
         Username = "sss",
         Password = "password",
     });
 
-    //await easyClient.SendAsync(RpcPackageInfo.Create(new MQTT.Client.LoginRequest
-    //{
-    //    Username = "sss",
-    //    Password = "password",
-    //}));
+    var reply = await easyClient.ReceiveAsync();
 
-    //var reply = await easyClient.ReceiveAsync();
-
-    //   Console.WriteLine($"登录结果：{reply.Successful},响应内容：{reply.Content}");
+    //Console.WriteLine($"登录结果：{reply.Successful},响应内容：{reply.Content}");
 }
 
 watch.Stop();
