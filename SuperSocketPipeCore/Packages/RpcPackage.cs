@@ -1,6 +1,6 @@
-﻿using MemoryPack;
-using SuperSocket.ProtoBase;
+﻿using SuperSocket.ProtoBase;
 using System.Buffers;
+using System.Text;
 
 namespace Core;
 
@@ -57,24 +57,11 @@ public abstract class RpcPackageBase : IKeyedPackageInfo<CommandKey>
     /// <summary>
     /// 命令
     /// </summary>
-    [MemoryPackIgnore]
     public CommandKey Key { get; set; }
 
-    public virtual int Encode(IBufferWriter<byte> bufWriter)
-    {
-        using var state = MemoryPackWriterOptionalStatePool.Rent(MemoryPackSerializerOptions.Utf8);
-        var writer = new MemoryPackWriter<IBufferWriter<byte>>(ref bufWriter, state);
-        writer.WriteValue(Type, this);
-        var writtenCount = writer.WrittenCount;
-        writer.Flush();
+    public abstract int Encode(IBufferWriter<byte> bufWriter);
 
-        return writtenCount;
-    }
-
-    protected internal virtual void DecodeBody(ref SequenceReader<byte> reader, object? context)
-    {
-        MemoryPackSerializer.Deserialize(Type, reader.UnreadSequence, ref context);
-    }
+    protected internal abstract void DecodeBody(ref SequenceReader<byte> reader, object? context);
 
     public override string ToString()
     {
@@ -98,22 +85,62 @@ public abstract class RpcRespPackage : RpcPackageBase
 
 public abstract class RpcPackageWithIdentifier : RpcPackageBase
 {
-    public ulong Identifier { get; set; }
+    public long Identifier { get; set; }
 
     protected RpcPackageWithIdentifier(CommandKey key) : base(key)
     {
+    }
+
+    public override int Encode(IBufferWriter<byte> bufWriter)
+    {
+        return bufWriter.WriteLittleEndian(Identifier);
+    }
+
+    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    {
+        reader.TryReadLittleEndian(out long identifier);
+
+        Identifier = identifier;
     }
 }
 
 public abstract class RpcRespPackageWithIdentifier : RpcPackageWithIdentifier
 {
+    protected RpcRespPackageWithIdentifier(CommandKey key) : base(key)
+    {
+    }
+
     public string? ErrorMessage { get; set; }
 
     public bool SuccessFul { get; set; }
 
     public int ErrorCode { get; set; }
 
-    protected RpcRespPackageWithIdentifier(CommandKey key) : base(key)
+    public override int Encode(IBufferWriter<byte> bufWriter)
     {
+        var length = base.Encode(bufWriter);
+
+        length += bufWriter.WriteLittleEndian(SuccessFul);
+
+        if (!string.IsNullOrWhiteSpace(ErrorMessage))
+            length += bufWriter.Write(ErrorMessage, Encoding.UTF8);
+
+        length += bufWriter.WriteLittleEndian(ErrorCode);
+
+        return length;
+    }
+
+    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    {
+        base.DecodeBody(ref reader, context);
+
+        reader.TryRead(out var successFul);
+        SuccessFul = successFul == 1;
+
+        if (reader.TryRead(out var errorMessageLen) && errorMessageLen > 0)
+            ErrorMessage = reader.ReadString(Encoding.UTF8, errorMessageLen);
+
+        reader.TryReadLittleEndian(out int errorCode);
+        ErrorCode = errorCode;
     }
 }

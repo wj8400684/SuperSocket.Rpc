@@ -17,27 +17,37 @@ public sealed partial class LoginPackage : RpcPackageWithIdentifier
 
     public string? Password { get; set; }
 
-//    public override int Encode(IBufferWriter<byte> bufWriter)
-//    {
-//        using var compressor = new BrotliCompressor();
-//        MemoryPackSerializer.Serialize(compressor, this);
-//        var compressedBytes = compressor.ToArray();
-//        bufWriter.Write(compressedBytes);
-//        return compressedBytes.Length;
-//    }
+    public override int Encode(IBufferWriter<byte> bufWriter)
+    {
+        return base.Encode(bufWriter);
+    }
 
-//    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
-//    {
-//        var refPackage = this;
+    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    {
+        base.DecodeBody(ref reader, context);
+    }
 
-//        // Decompression(require using)
-//        using var decompressor = new BrotliDecompressor();
+    //    public override int Encode(IBufferWriter<byte> bufWriter)
+    //    {
+    //        using var compressor = new BrotliCompressor();
+    //        MemoryPackSerializer.Serialize(compressor, this);
+    //        var compressedBytes = compressor.ToArray();
+    //        bufWriter.Write(compressedBytes);
+    //        return compressedBytes.Length;
+    //    }
 
-//        // Get decompressed ReadOnlySequence<byte> from ReadOnlySpan<byte> or ReadOnlySequence<byte>
-//        var decompressedBuffer = decompressor.Decompress(reader.UnreadSequence);
+    //    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    //    {
+    //        var refPackage = this;
 
-//        MemoryPackSerializer.Deserialize(decompressedBuffer, ref refPackage);
-//    }
+    //        // Decompression(require using)
+    //        using var decompressor = new BrotliDecompressor();
+
+    //        // Get decompressed ReadOnlySequence<byte> from ReadOnlySpan<byte> or ReadOnlySequence<byte>
+    //        var decompressedBuffer = decompressor.Decompress(reader.UnreadSequence);
+
+    //        MemoryPackSerializer.Deserialize(decompressedBuffer, ref refPackage);
+    //    }
 }
 
 [MemoryPackable]

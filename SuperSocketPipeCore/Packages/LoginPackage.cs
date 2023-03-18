@@ -1,46 +1,43 @@
-﻿using MemoryPack;
-using MemoryPack.Compression;
+﻿
 using SuperSocket.ProtoBase;
 using System.Buffers;
-using Core;
+using System.Text;
 
-namespace CoreMemoryPack;
+namespace Core;
 
-[MemoryPackable]
 public sealed partial class LoginPackage : RpcPackageWithIdentifier
 {
-    public LoginPackage() : base(CommandKey.Login)
+    public LoginPackage()
+        : base(CommandKey.Login)
     {
     }
 
-    public string? Username { get; set; }
+    public required string Username { get; set; }
 
-    public string? Password { get; set; }
+    public required string Password { get; set; }
 
-//    public override int Encode(IBufferWriter<byte> bufWriter)
-//    {
-//        using var compressor = new BrotliCompressor();
-//        MemoryPackSerializer.Serialize(compressor, this);
-//        var compressedBytes = compressor.ToArray();
-//        bufWriter.Write(compressedBytes);
-//        return compressedBytes.Length;
-//    }
+    public override int Encode(IBufferWriter<byte> bufWriter)
+    {
+        var length = base.Encode(bufWriter);
 
-//    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
-//    {
-//        var refPackage = this;
+        length += bufWriter.WriteLittleEndian(Username);
+        length += bufWriter.WriteLittleEndian(Password);
 
-//        // Decompression(require using)
-//        using var decompressor = new BrotliDecompressor();
+        return length;
+    }
 
-//        // Get decompressed ReadOnlySequence<byte> from ReadOnlySpan<byte> or ReadOnlySequence<byte>
-//        var decompressedBuffer = decompressor.Decompress(reader.UnreadSequence);
+    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
+    {
+        base.DecodeBody(ref reader, context);
 
-//        MemoryPackSerializer.Deserialize(decompressedBuffer, ref refPackage);
-//    }
+        reader.TryRead(out var usernameLen);
+        Username = reader.ReadString(Encoding.UTF8, usernameLen);
+
+        reader.TryRead(out var passwordfLen);
+        Password = reader.ReadString(Encoding.UTF8, passwordfLen);
+    }
 }
 
-[MemoryPackable]
 public sealed partial class LoginRespPackage : RpcRespPackageWithIdentifier
 {
     public LoginRespPackage() : base(CommandKey.LoginAck)

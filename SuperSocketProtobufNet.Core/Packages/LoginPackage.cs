@@ -1,47 +1,18 @@
-﻿
-using SuperSocket.ProtoBase;
-using System.Buffers;
-using System.Text;
-
+﻿using ProtoBuf;
 namespace Core;
 
-public sealed partial class LoginPackage : RpcPackageWithIdentifier
+[ProtoContract]
+public sealed class LoginPackage : RpcContentPackage
 {
-    public LoginPackage()
-        : base(CommandKey.Login)
-    {
-    }
-
+    [ProtoMember(1)]
     public required string Username { get; set; }
 
+    [ProtoMember(2)]
     public required string Password { get; set; }
-
-    public override int Encode(IBufferWriter<byte> bufWriter)
-    {
-        var length = base.Encode(bufWriter);
-
-        length += bufWriter.WriteLittleEndian(Username);
-        length += bufWriter.WriteLittleEndian(Password);
-
-        return length;
-    }
-
-    protected internal override void DecodeBody(ref SequenceReader<byte> reader, object? context)
-    {
-        base.DecodeBody(ref reader, context);
-
-        reader.TryRead(out var usernameLen);
-        Username = reader.ReadString(Encoding.UTF8, usernameLen);
-
-        reader.TryRead(out var passwordfLen);
-        Password = reader.ReadString(Encoding.UTF8, passwordfLen);
-    }
 }
 
-public sealed partial class LoginRespPackage : RpcRespPackageWithIdentifier
+[ProtoContract]
+public sealed class LoginRespPackage : RpcContentPackage
 {
-    public LoginRespPackage() : base(CommandKey.LoginAck)
-    {
-    }
 }
 

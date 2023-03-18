@@ -41,11 +41,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppServer", "Console
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protobuf", "protobuf", "{D325D3B1-8BFE-4CE7-AF3F-20E2702BE558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.Console.App.Server", "SuperSocket.Console.App.Server\SuperSocket.Console.App.Server.csproj", "{5FD5D69C-C704-4FD9-B370-3165C808D77B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.Console.App.Server", "SuperSocket.Console.App.Server\SuperSocket.Console.App.Server.csproj", "{5FD5D69C-C704-4FD9-B370-3165C808D77B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.Console.App.Client", "SuperSocket.Console.App.Client\SuperSocket.Console.App.Client.csproj", "{1D58AC84-7845-489E-9899-585E91A4F1D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.Console.App.Client", "SuperSocket.Console.App.Client\SuperSocket.Console.App.Client.csproj", "{1D58AC84-7845-489E-9899-585E91A4F1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.App.Core", "SuperSocket.App.Core\SuperSocket.App.Core.csproj", "{4D9CA3CD-103B-4E88-914A-FC6BC873029B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.App.Core", "SuperSocket.App.Core\SuperSocket.App.Core.csproj", "{4D9CA3CD-103B-4E88-914A-FC6BC873029B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "coustom", "coustom", "{75B96906-32A9-4018-B97E-41FEA24D6989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeCore", "SuperSocketPipeCore\SuperSocketPipeCore.csproj", "{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeClient", "SuperSocketPipeClient\SuperSocketPipeClient.csproj", "{C52A684A-2F99-4961-9BBA-68158A2CE3F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeServer", "SuperSocketPipeServer\SuperSocketPipeServer.csproj", "{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protobufnet", "protobufnet", "{31995792-F320-4BE4-AE1F-36A36FF48CF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketProtobufNet.Client", "SuperSocketProtobufNet.Client\SuperSocketProtobufNet.Client.csproj", "{7AD43FD0-4D00-4C82-B851-859A95B5FA69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketProtobufNet.Server", "SuperSocketProtobufNet.Server\SuperSocketProtobufNet.Server.csproj", "{88A46521-4350-450D-AC41-EC7DD1D33BE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketProtobufNet.Core", "SuperSocketProtobufNet.Core\SuperSocketProtobufNet.Core.csproj", "{C674A1A1-3306-4D96-B7E1-455C6C55E40A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +137,30 @@ Global
 		{4D9CA3CD-103B-4E88-914A-FC6BC873029B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D9CA3CD-103B-4E88-914A-FC6BC873029B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D9CA3CD-103B-4E88-914A-FC6BC873029B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52A684A-2F99-4961-9BBA-68158A2CE3F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52A684A-2F99-4961-9BBA-68158A2CE3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52A684A-2F99-4961-9BBA-68158A2CE3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52A684A-2F99-4961-9BBA-68158A2CE3F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD43FD0-4D00-4C82-B851-859A95B5FA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD43FD0-4D00-4C82-B851-859A95B5FA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD43FD0-4D00-4C82-B851-859A95B5FA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD43FD0-4D00-4C82-B851-859A95B5FA69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A46521-4350-450D-AC41-EC7DD1D33BE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A46521-4350-450D-AC41-EC7DD1D33BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A46521-4350-450D-AC41-EC7DD1D33BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A46521-4350-450D-AC41-EC7DD1D33BE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +183,12 @@ Global
 		{5FD5D69C-C704-4FD9-B370-3165C808D77B} = {D325D3B1-8BFE-4CE7-AF3F-20E2702BE558}
 		{1D58AC84-7845-489E-9899-585E91A4F1D7} = {D325D3B1-8BFE-4CE7-AF3F-20E2702BE558}
 		{4D9CA3CD-103B-4E88-914A-FC6BC873029B} = {D325D3B1-8BFE-4CE7-AF3F-20E2702BE558}
+		{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C} = {75B96906-32A9-4018-B97E-41FEA24D6989}
+		{C52A684A-2F99-4961-9BBA-68158A2CE3F9} = {75B96906-32A9-4018-B97E-41FEA24D6989}
+		{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3} = {75B96906-32A9-4018-B97E-41FEA24D6989}
+		{7AD43FD0-4D00-4C82-B851-859A95B5FA69} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
+		{88A46521-4350-450D-AC41-EC7DD1D33BE4} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
+		{C674A1A1-3306-4D96-B7E1-455C6C55E40A} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53C90ED2-6490-47F1-8861-C45C53155BE1}
