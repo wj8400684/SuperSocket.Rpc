@@ -5,11 +5,13 @@ namespace Server;
 [RpcCommand(CommandKey.Login)]
 public sealed class Login : RpcAsyncCommand<LoginRequest, LoginReply>
 {
-    protected override ValueTask<LoginReply> OnHandlerAsync(RpcSession session, RpcPackageInfo packet, LoginRequest content)
+    protected override ValueTask<RpcResponse<LoginReply>> OnHandlerAsync(RpcSession session, RpcPackageInfo packageInfo, LoginRequest content)
     {
-        return new ValueTask<LoginReply>(new LoginReply
-        {
-            UserId = Guid.NewGuid().ToString(),
-        });
+        return new ValueTask<RpcResponse<LoginReply>>(new RpcResponse<LoginReply>(
+            successful: true,
+            contentPacket: new LoginReply
+            {
+                UserId = Guid.NewGuid().ToString(),
+            }));
     }
 }

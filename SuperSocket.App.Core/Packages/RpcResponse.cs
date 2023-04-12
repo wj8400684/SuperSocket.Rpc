@@ -4,6 +4,14 @@ namespace Core;
 
 public readonly struct RpcResponse<TContentPacket> where TContentPacket : class, IMessage
 {
+    public RpcResponse(bool successful = false, ErrorCode errorCode = ErrorCode.Null, string? errorMessage = null, TContentPacket? contentPacket = null)
+    {
+        Successful = successful;
+        ErrorCode = errorCode;
+        ErrorMessage = errorMessage;
+        Content = contentPacket;
+    }
+
     public RpcResponse(RpcPackageInfo package)
     {
         Successful = package.SuccessFul;
@@ -15,7 +23,7 @@ public readonly struct RpcResponse<TContentPacket> where TContentPacket : class,
     /// <summary>
     /// 包内容
     /// </summary>
-    public readonly TContentPacket Content { get; }
+    public TContentPacket? Content { get; }
 
     /// <summary>
     /// 是否成功

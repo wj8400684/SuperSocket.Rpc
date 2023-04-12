@@ -106,7 +106,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
         await ExecuteAsync(session, package, packet);
     }
 
-    protected abstract ValueTask<TReplyPackage> OnHandlerAsync(RpcSession session, RpcPackageInfo packageInfo, TPackage content);
+    protected abstract ValueTask<RpcResponse<TReplyPackage>> OnHandlerAsync(RpcSession session, RpcPackageInfo packageInfo, TPackage content);
 
     /// <summary>
     /// 解析包内容
@@ -160,7 +160,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
     /// <returns></returns>
     private async ValueTask ExecuteAsync(RpcSession session, RpcPackageInfo package, TPackage content)
     {
-        TReplyPackage? replyContent = null;
+        RpcResponse<TReplyPackage>? response = null;
 
         var replyPackage = new RpcPackageInfo
         {
@@ -171,12 +171,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
 
         try
         {
-            replyContent = await OnHandlerAsync(session, package, content);
-        }
-        catch (TimeoutException ex)
-        {
-            replyPackage.ErrorMessage = "任务已经超时";
-            session.LogError(ex, $"[ {session.RemoteAddress} ]-[ {session.SessionID} ]-[ {ex.Message} ] 任务已经超时");
+            response = await OnHandlerAsync(session, package, content);
         }
         catch (Exception ex)//未处理异常 需要断开连接
         {
@@ -184,7 +179,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
             session.LogError(ex, $"[ {session.RemoteAddress} ]-[ {session.SessionID} ]-[ {ex.Message} ] 未处理异常，执行二次封包异常。关闭 ");
         }
 
-        if (replyContent == null)
+        if (response == null)
         {
             await session.SendPacketAsync(replyPackage);
             return;
@@ -192,7 +187,7 @@ public abstract class RpcAsyncCommand<TPackage, TReplyPackage> :
 
         try
         {
-            replyPackage.Content = await OnEncodePackageAsync(replyContent);
+            replyPackage.Content = await OnEncodePackageAsync(response.Value.Content!);
             replyPackage.SuccessFul = true;
         }
         catch (Exception ex)
