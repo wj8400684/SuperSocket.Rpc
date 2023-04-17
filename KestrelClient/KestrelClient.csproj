@@ -8,13 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TouchSocket" Version="1.3.0" />
+    <PackageReference Include="SuperSocket.Client" Version="2.0.0-beta.15" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TouchCore\TouchCore.csproj" />
-  </ItemGroup>
-	<PropertyGroup>
-		<ServerGarbageCollection>true</ServerGarbageCollection>
-	</PropertyGroup>
 </Project>

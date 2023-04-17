@@ -6,7 +6,6 @@ using SuperSocket.ProtoBase;
 using SuperSocketMemoryPack;
 using SuperSocketMemoryPack.Commands;
 using TContentPackage;
-
 var host = SuperSocketHostBuilder.Create<RpcPackageBase, RpcPipeLineFilter>()
     .UseHostedService<RpcServer>()
     .UseSession<RpcSession>()

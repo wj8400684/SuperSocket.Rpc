@@ -1,10 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Client;
+using Microsoft.Extensions.Logging;
 using SuperSocket.Client;
 using SuperSocket.Client.Command;
 using SuperSocket.ProtoBase;
 using System.Net;
 
 namespace Core;
+
+
 
 public sealed class RpcClient : EasyCommandClient<CommandKey, RpcPackageBase>
 {
@@ -19,6 +22,11 @@ public sealed class RpcClient : EasyCommandClient<CommandKey, RpcPackageBase>
         ILogger<RpcClient> logger) : base(packageHandler, pipelineFilter, packageEncoder, logger)
     {
         _easyClient = this;
+    }
+
+    protected override IConnector GetConnector()
+    {
+        return new UnixSocketConnector();
     }
 
     internal new ValueTask<bool> ConnectAsync(EndPoint remoteEndPoint, CancellationToken cancellationToken) => base.ConnectAsync(remoteEndPoint, cancellationToken);

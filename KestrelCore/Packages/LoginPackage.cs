@@ -1,8 +1,7 @@
 ﻿using MemoryPack;
 using System.Buffers;
-using TContentPackage;
 
-namespace CoreMemoryPack;
+namespace KestrelCore;
 
 [MemoryPackable]
 public sealed partial class LoginPackage : RpcPackageWithIdentifier

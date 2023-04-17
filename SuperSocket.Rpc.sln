@@ -49,11 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.App.Core", "Sup
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "coustom", "coustom", "{75B96906-32A9-4018-B97E-41FEA24D6989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeCore", "SuperSocketPipeCore\SuperSocketPipeCore.csproj", "{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocketPipeCore", "SuperSocketPipeCore\SuperSocketPipeCore.csproj", "{FC1001E3-3191-4ECA-A34C-95C9B4A88E6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeClient", "SuperSocketPipeClient\SuperSocketPipeClient.csproj", "{C52A684A-2F99-4961-9BBA-68158A2CE3F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocketPipeClient", "SuperSocketPipeClient\SuperSocketPipeClient.csproj", "{C52A684A-2F99-4961-9BBA-68158A2CE3F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketPipeServer", "SuperSocketPipeServer\SuperSocketPipeServer.csproj", "{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocketPipeServer", "SuperSocketPipeServer\SuperSocketPipeServer.csproj", "{BE14ED95-3EE0-40C9-9A7D-7E0952C67BB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protobufnet", "protobufnet", "{31995792-F320-4BE4-AE1F-36A36FF48CF7}"
 EndProject
@@ -62,6 +62,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketProtobufNet.Server", "SuperSocketProtobufNet.Server\SuperSocketProtobufNet.Server.csproj", "{88A46521-4350-450D-AC41-EC7DD1D33BE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocketProtobufNet.Core", "SuperSocketProtobufNet.Core\SuperSocketProtobufNet.Core.csproj", "{C674A1A1-3306-4D96-B7E1-455C6C55E40A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kestrel", "kestrel", "{C229924F-E1DE-4976-A204-0876608234B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KestrelServer", "KestrelServer\KestrelServer.csproj", "{43D155EB-C1FF-46AD-BCAB-C3037FF74D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KestrelClient", "KestrelClient\KestrelClient.csproj", "{7AA68CA6-51B1-4892-8050-29BCCCB97CB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KestrelCore", "KestrelCore\KestrelCore.csproj", "{8D8A92A5-2A0A-430B-B60C-297BDF230331}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,6 +171,22 @@ Global
 		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C674A1A1-3306-4D96-B7E1-455C6C55E40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D155EB-C1FF-46AD-BCAB-C3037FF74D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D155EB-C1FF-46AD-BCAB-C3037FF74D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D155EB-C1FF-46AD-BCAB-C3037FF74D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D155EB-C1FF-46AD-BCAB-C3037FF74D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA68CA6-51B1-4892-8050-29BCCCB97CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA68CA6-51B1-4892-8050-29BCCCB97CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA68CA6-51B1-4892-8050-29BCCCB97CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA68CA6-51B1-4892-8050-29BCCCB97CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D8A92A5-2A0A-430B-B60C-297BDF230331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8A92A5-2A0A-430B-B60C-297BDF230331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8A92A5-2A0A-430B-B60C-297BDF230331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8A92A5-2A0A-430B-B60C-297BDF230331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +215,10 @@ Global
 		{7AD43FD0-4D00-4C82-B851-859A95B5FA69} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
 		{88A46521-4350-450D-AC41-EC7DD1D33BE4} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
 		{C674A1A1-3306-4D96-B7E1-455C6C55E40A} = {31995792-F320-4BE4-AE1F-36A36FF48CF7}
+		{43D155EB-C1FF-46AD-BCAB-C3037FF74D62} = {C229924F-E1DE-4976-A204-0876608234B9}
+		{7AA68CA6-51B1-4892-8050-29BCCCB97CB1} = {C229924F-E1DE-4976-A204-0876608234B9}
+		{8D8A92A5-2A0A-430B-B60C-297BDF230331} = {C229924F-E1DE-4976-A204-0876608234B9}
+		{5DC5681A-AE9B-4AF4-BFEC-39562D9F1A0F} = {7753D195-CCCD-48D6-A011-E73B64564A2D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53C90ED2-6490-47F1-8861-C45C53155BE1}

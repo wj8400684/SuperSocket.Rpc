@@ -1,7 +1,7 @@
 ﻿using MemoryPack;
 using System.Buffers;
 
-namespace TContentPackage;
+namespace KestrelCore;
 
 public abstract class RpcPackageBase 
 {

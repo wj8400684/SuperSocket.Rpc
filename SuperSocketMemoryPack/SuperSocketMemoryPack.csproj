@@ -4,13 +4,15 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="appsettings.json" />
   </ItemGroup>
-
+	<PropertyGroup>
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+	</PropertyGroup>
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -18,9 +20,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="SuperSocket" Version="2.0.0-beta.15" />
+    <PackageReference Include="SuperSocket.IOCPTcpChannelCreatorFactory" Version="2.0.0-beta.15" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,17 +22,13 @@ var provider = services.BuildServiceProvider();
 
 var client = provider.GetRequiredService<RpcClient>();
 
-await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
+await client.ConnectAsync(new DnsEndPoint("127.0.0.1", 5001, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
 
 
 //var easyClient = new EasyClient<RpcPackageInfo, RpcPackageInfo>(new RpcPipeLineFilter(), new RpcPackageEncode()).AsClient();
 
 
 //await easyClient.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
-
-
-
-
 
 
 var watch = new Stopwatch();

@@ -3,8 +3,10 @@ using CoreMemoryPack;
 using Microsoft.Extensions.DependencyInjection;
 using SuperSocket.Client;
 using SuperSocket.Client.Command;
+using System.Buffers;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Sockets;
 using TContentPackage;
 
 var services = new ServiceCollection();
@@ -30,11 +32,6 @@ var easyClient = new EasyClient<RpcPackageBase, RpcPackageBase>(new RpcPipeLineF
 
 
 await easyClient.ConnectAsync(new DnsEndPoint("127.0.0.1", 4040, System.Net.Sockets.AddressFamily.InterNetwork), CancellationToken.None);
-
-
-
-
-
 
 var watch = new Stopwatch();
 watch.Start();

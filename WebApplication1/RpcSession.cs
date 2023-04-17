@@ -3,10 +3,9 @@ using SuperSocket.Channel;
 using SuperSocket.ProtoBase;
 using SuperSocket.Server;
 using System.Net;
-using Core;
-using System.Net.Sockets;
+using TContentPackage;
 
-namespace Server;
+namespace SuperSocketMemoryPack;
 
 public sealed class RpcSession : AppSession
 {
@@ -42,13 +41,7 @@ public sealed class RpcSession : AppSession
     /// <returns></returns>
     protected override ValueTask OnSessionConnectedAsync()
     {
-        RemoteAddress = RemoteEndPoint switch
-        {
-            IPEndPoint => ((IPEndPoint)RemoteEndPoint).Address.ToString(),
-            DnsEndPoint => ((DnsEndPoint)RemoteEndPoint).Host.ToString(),
-            UnixDomainSocketEndPoint => ((UnixDomainSocketEndPoint)RemoteEndPoint).ToString(),
-            _ => string.Empty,
-        };
+        RemoteAddress = ((IPEndPoint)RemoteEndPoint).Address.ToString();
 
         return ValueTask.CompletedTask;
     }
